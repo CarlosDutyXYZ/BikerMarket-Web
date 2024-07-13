@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin/>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#8D8D8D]">
+    <div class="bg-[#fff] rounded-lg min-[320px]:m-5 min-[320px]:pb-2 sm:m-6 md:m-8 md:pb-[50px] min-[800px]:pb-[100px] min-[850px]:pb-[150px] min-[900px]:pb-[200px] min-[1100px]:pb-[250px] min-[1200px]:pb-[300px] min-[1800px]:pb-[350px] min-[2350px]:pb-[400px]">
+        <div class="relative bg-[url('assets/img/eventoBG.jpg')] bg-cover bg-center bg-no-repeat rounded-t-lg min-[320px]:h-[100px] sm:h-[120px] md:h-[200px]"> 
+            <div class="relative bg-[rgba(0,0,0,0.6)] rounded-t-lg min-[320px]:h-[100px] sm:h-[120px] md:h-[200px]">
+                <div class="absolute w-full">
+                    <div class="bg-[#FEF5EE] flex flex-col justify-center rounded-lg min-[320px]:h-[60px] min-[320px]:my-5 min-[320px]:mx-5 min-[320px]:pl-2 sm:h-[80px] md:h-[120px] md:my-10 md:mx-10 md:pl-4 2xl:pl-6">
+                        <p class="font-bold min-[320px]:text-[12px] sm:text-[16px] sm:mb-1 md:text-[20px] md:mb-2 2xl:text-[28px]">Biker Fest 2024</p>
+                        <p class="min-[320px]:text-[10px] sm:text-[12px] md:text-[16px] 2xl:text-[20px]"><strong>Fecha de inicio:</strong> viernes, 26 de julio de 2024</p>
+                        <p class="min-[320px]:text-[10px] sm:text-[12px] md:text-[16px] 2xl:text-[20px]"><strong>Fecha de fin:</strong> domingo, 28 de julio de 2024</p>
+                    </div>
+                    
+                </div>~
+            </div>
+        </div>
+
+        <div class="md:w-3/4 md:float-right">
+            <div class="border-black border rounded-lg min-[320px]:m-5 min-[320px]:p-2 md:mx-[10px] md:my-5 md:p-4">
+                <p class="font-bold text-[#4A4A4A] min-[320px]:text-[16px] min-[320px]:mb-2 sm:text-[20px] 2xl:text-[24px]">Acerca del evento</p>
+                <p class="font-light text-justify min-[320px]:text-[10px] sm:text-[12px] md:text-[14px] 2xl:text-[16px]">
+                    Biker Fest 2024: Celebrando la Pasión por las Motos en Chihuahua. Preparate para una experiencia unica de adrenalina y diversion en Biker Fest 2024. <br>
+                    Este emocionante evento se llevara a cabo en el Parque El Palomar, ubicado en Chihuahua, Chih, Mexico
+                </p>
+            </div>
+
+            <div class="border-black border rounded-lg min-[320px]:m-5 min-[320px]:p-2 md:mx-[10px] md:my-5 md:p-4">
+                <p class="font-bold text-[#4A4A4A] min-[320px]:text-[16px] min-[320px]:mb-2 sm:text-[20px] 2xl:text-[24px]">Ubicación</p>
+                <div class="min-[320px]:h-[180px] sm:h-[220px] md:h-[300px]" id="map"> </div>
+            </div>
+
+            <div class="bg-black min-[320px]:m-5 min-[320px]:p-2 min-[320px]:h-[156px] sm:h-[200px] md:mx-[10px] md:my-5 md:h-[250px]">
+                <p class="text-white text-center">Imagenes</p>
+            </div>
+
+            <a href="#"><div class="min-[320px]:hidden bg-[#F15A24] flex justify-center items-center rounded-lg min-[320px]:m-5 min-[320px]:h-6 sm:h-7 md:flex md:mx-[10px] md:h-8 2xl:h-10">
+                <p class="font-bold text-white min-[320px]:text-[14px] md:text-[16px] 2xl:text-[20px]">Inscribirme</p>
+            </div></a>
+        </div>
+
+        <div class="md:w-1/4 md:border-r md:border-[#F15A24]">
+            <div class="border-black border rounded-lg min-[320px]:m-5 min-[320px]:p-2 md:mx-[10px] md:my-5 md:p-4">
+                <p class="font-bold text-[#4A4A4A] min-[320px]:text-[16px] min-[320px]:mb-2 sm:text-[20px] md:text-[16px] xl:text-[20px]">Precios</p>
+                <div class="flex flex-row justify-between items-center md:flex-col md:space-y-4">
+                    <div class="flex flex-col justify-center items-center md:flex-row">
+                        <div class="bg-[#F47943] flex items-center justify-center rounded-full min-[320px]:w-10 min-[320px]:h-10 sm:w-[60px] sm:h-[60px] md:w-[40px] md:h-[40px] xl:w-[60px] xl:h-[60px] 2xl:w-[80px] 2xl:h-[80px]">
+                            <svg class="fill-white min-[320px]:w-5 min-[320px]:h-[23px] sm:w-[30px] sm:h-[33px] md:w-5 md:h-6 xl:w-[40px] xl:h-[32px] 2xl:w-[50px] 2xl:h-[42px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 256c-57.2 0-105.6-37.5-122-89.3c-1.1 1.3-2.2 2.6-3.5 3.8c-15.8 15.8-38.8 20.7-53.6 22.1c-8.1 .8-14.6-5.7-13.8-13.8c1.4-14.7 6.3-37.8 22.1-53.6c5.8-5.8 12.6-10.1 19.6-13.4c-7-3.2-13.8-7.6-19.6-13.4C37.4 82.7 32.6 59.7 31.1 44.9c-.8-8.1 5.7-14.6 13.8-13.8c14.7 1.4 37.8 6.3 53.6 22.1c4.8 4.8 8.7 10.4 11.7 16.1C131.4 28.2 174.4 0 224 0c70.7 0 128 57.3 128 128s-57.3 128-128 128zM0 482.3C0 399.5 56.4 330 132.8 309.9c6-1.6 12.2 .9 15.9 5.8l62.5 83.3c6.4 8.5 19.2 8.5 25.6 0l62.5-83.3c3.7-4.9 9.9-7.4 15.9-5.8C391.6 330 448 399.5 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM160 96c-8.8 0-16 7.2-16 16s7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H160z"/></svg>
+                        </div>
+                        <div class="md:flex md:flex-row md:items-center md:justify-center md:ml-1" >
+                            <p class="font-normal mt-2 min-[320px]:text-[10px] sm:text-[14px] xl:text-[18px] 2xl:text-[20px]">Piloto</p>
+                            <p class="font-bold mt-1 text-[#F15A24] min-[320px]:text-[10px] sm:text-[14px] md:ml-1 xl:text-[18px] 2xl:text-[20px]">$350</p>
+                        </div>
+                        
+                    </div>
+                    <div class="flex flex-col justify-center items-center md:flex-row">
+                        <div class="bg-[#DBB90B] flex items-center justify-center rounded-full min-[320px]:w-10 min-[320px]:h-10 sm:w-[60px] sm:h-[60px] md:w-[40px] md:h-[40px] xl:w-[60px] xl:h-[60px] 2xl:w-[80px] 2xl:h-[80px]">
+                            <svg class="fill-white min-[320px]:w-5 min-[320px]:h-[23px] sm:w-[30px] sm:h-[33px] md:w-5 md:h-6 xl:w-[40px] xl:h-[32px] 2xl:w-[50px] 2xl:h-[42px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M370.7 96.1C346.1 39.5 289.7 0 224 0S101.9 39.5 77.3 96.1C60.9 97.5 48 111.2 48 128v64c0 16.8 12.9 30.5 29.3 31.9C101.9 280.5 158.3 320 224 320s122.1-39.5 146.7-96.1c16.4-1.4 29.3-15.1 29.3-31.9V128c0-16.8-12.9-30.5-29.3-31.9zM336 144v16c0 53-43 96-96 96H208c-53 0-96-43-96-96V144c0-26.5 21.5-48 48-48H288c26.5 0 48 21.5 48 48zM189.3 162.7l-6-21.2c-.9-3.3-3.9-5.5-7.3-5.5s-6.4 2.2-7.3 5.5l-6 21.2-21.2 6c-3.3 .9-5.5 3.9-5.5 7.3s2.2 6.4 5.5 7.3l21.2 6 6 21.2c.9 3.3 3.9 5.5 7.3 5.5s6.4-2.2 7.3-5.5l6-21.2 21.2-6c3.3-.9 5.5-3.9 5.5-7.3s-2.2-6.4-5.5-7.3l-21.2-6zM112.7 316.5C46.7 342.6 0 407 0 482.3C0 498.7 13.3 512 29.7 512H128V448c0-17.7 14.3-32 32-32H288c17.7 0 32 14.3 32 32v64l98.3 0c16.4 0 29.7-13.3 29.7-29.7c0-75.3-46.7-139.7-112.7-165.8C303.9 338.8 265.5 352 224 352s-79.9-13.2-111.3-35.5zM176 448c-8.8 0-16 7.2-16 16v48h32V464c0-8.8-7.2-16-16-16zm96 32a16 16 0 1 0 0-32 16 16 0 1 0 0 32z"/></svg>
+                        </div>
+                        <div class="md:flex md:flex-row md:items-center md:justify-center md:ml-1">
+                            <p class="font-normal mt-2 min-[320px]:text-[10px] sm:text-[14px] xl:text-[18px] 2xl:text-[20px]">Copiloto</p>
+                            <p class="font-bold mt-1 text-[#F15A24] min-[320px]:text-[10px] sm:text-[14px] md:ml-1 xl:text-[18px] 2xl:text-[20px]">$250</p>
+                        </div>
+                        
+                    </div>
+                    <div class="flex flex-col justify-center items-center md:flex-row">   
+                        <div class="bg-[#F44343] flex items-center justify-center rounded-full min-[320px]:w-10 min-[320px]:h-10 sm:w-[60px] sm:h-[60px] md:w-[40px] md:h-[40px] xl:w-[60px] xl:h-[60px] 2xl:w-[80px] 2xl:h-[80px]">
+                            <svg class="fill-white min-[320px]:w-7 min-[320px]:h-5 sm:w-[38px] sm:h-[30px] md:w-6 md:h-5 xl:w-[32px] xl:h-[40px] 2xl:h-[50px] 2xl:w-[42px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"/></svg>
+                        </div>
+                        <div class="md:flex md:flex-row md:items-center md:justify-center md:ml-1">
+                            <p class="font-normal mt-2 min-[320px]:text-[10px] sm:text-[14px] xl:text-[18px] 2xl:text-[20px]">Otros</p>
+                            <p class="font-bold mt-1 text-[#F15A24] min-[320px]:text-[10px] sm:text-[14px] md:ml-1 xl:text-[18px] 2xl:text-[20px]">$150</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-black border rounded-lg min-[320px]:m-5 min-[320px]:p-2 md:mx-[10px] md:my-5 md:p-4 md:h-full">
+                <p class="font-bold text-[#4A4A4A] min-[320px]:text-[16px] min-[320px]:mb-2 sm:text-[20px] md:text-[16px] xl:text-[20px]">Documentos</p>
+                <p class="font-light text-justify min-[320px]:text-[10px] sm:text-[14px] 2xl:text-[16px]">
+                    Para una comprensión completa del evento que estamos organizando, le recomendamos revisar los siguientes documentos oficiales. Puede descargarlos y verificar su contenido a través de su dispositivo móvil. Al analizar esta información, estará mejor equipado para tomar la decisión de inscribirse en este emocionante evento.
+                </p>
+                <a href="#"><div class="bg-[#e7e7e7] rounded flex flex-row justify-between items-center min-[320px]:h-5 min-[320px]:px-1 min-[320px]:my-2 sm:h-7">
+                    <p class="font-light text-[#8B8FF0] underline min-[320px]:text-[10px] sm:text-[12px] lg:text-[16px]">Convocatoria</p>
+                    <svg class="fill-[#757575] min-[320px]:w-3 min-[320px]:h-3 sm:w-4 sm:h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg>
+                </div></a>
+                <p class="font-light text-justify min-[320px]:text-[10px] sm:text-[14px] 2xl:text-[16px]">
+                    ¡Gracias por tu interés y esperamos verte pronto en nuestro evento!
+                </p>
+            </div>
+        </div>
+
+        <a href="#"><div class="bg-[#F15A24] flex justify-center items-center rounded-lg min-[320px]:m-5 min-[320px]:h-6 sm:h-7 md:hidden">
+            <p class="font-bold text-white min-[320px]: text-[14px]">Inscribirme</p>
+        </div></a>
+    </div>
+
+    <script src="assets/js/map.js"></script>
+</body>
+</html>
